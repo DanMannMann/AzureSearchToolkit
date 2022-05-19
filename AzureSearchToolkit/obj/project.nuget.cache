@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "J+l8On/xlSkmfcPqNsfAPfE1gQq9GEbrntwu+mxG4WI/6WSOD8jnl6VkEeWn+J93306E//CwbIR2P107BmZu7Q==",
+  "dgSpecHash": "oXCNvHTwjYumndErQiQmFW9arynh9HI2SYQOCvOPN4msHkRVHRjkK0eR3Cul+ww1bmlphZTEvc+xDidlKKzRXg==",
   "success": true,
   "projectFilePath": "D:\\Code\\git\\Marsman\\AzureSearchToolkit\\AzureSearchToolkit\\AzureSearchToolkit.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,10 @@
     "C:\\Users\\The King of Town\\.nuget\\packages\\azure.search.documents\\11.3.0\\azure.search.documents.11.3.0.nupkg.sha512",
     "C:\\Users\\The King of Town\\.nuget\\packages\\marsman.reflekt\\1.2.2\\marsman.reflekt.1.2.2.nupkg.sha512",
     "C:\\Users\\The King of Town\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",
-    "C:\\Users\\The King of Town\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\The King of Town\\.nuget\\packages\\microsoft.build.tasks.git\\1.1.1\\microsoft.build.tasks.git.1.1.1.nupkg.sha512",
+    "C:\\Users\\The King of Town\\.nuget\\packages\\microsoft.sourcelink.common\\1.1.1\\microsoft.sourcelink.common.1.1.1.nupkg.sha512",
+    "C:\\Users\\The King of Town\\.nuget\\packages\\microsoft.sourcelink.github\\1.1.1\\microsoft.sourcelink.github.1.1.1.nupkg.sha512",
+    "C:\\Users\\The King of Town\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\The King of Town\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\The King of Town\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.6.0\\system.diagnostics.diagnosticsource.4.6.0.nupkg.sha512",
     "C:\\Users\\The King of Town\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",

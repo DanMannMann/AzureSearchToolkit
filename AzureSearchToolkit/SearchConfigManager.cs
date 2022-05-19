@@ -20,15 +20,6 @@ namespace Marsman.AzureSearchToolkit
                               .Select(x => (Property: x, FieldAttribute: x.GetCustomAttribute<SearchableFieldAttribute>() ?? x.GetCustomAttribute<SimpleFieldAttribute>()))
                               .ToList();
 
-        public static SearchConfig GetEmptySearchConfigWithFacets(SearchResults<T> initialQuery)
-        {
-            var result = GetEmptySearchConfig();
-            result.Facets = FacetManager<T>.GetFacetsModel(initialQuery);
-            result.TotalResults = initialQuery.TotalCount.HasValue ? initialQuery.TotalCount.Value : 0;
-            result.TotalPages = initialQuery.TotalCount.HasValue ? initialQuery.TotalCount.Value / SearchConfigManager.DefaultPageSize : 0;
-            return result;
-        }
-
         public static SearchConfig GetEmptySearchConfig()
         {
             var filterSelectors = GetFilterSelectors();
@@ -65,28 +56,6 @@ namespace Marsman.AzureSearchToolkit
             return searchConfig;
         }
 
-        /// <summary>
-        /// Use this if you have a custom config model which extends <see cref="SearchConfig"/> and you want to have the base
-        /// properties set
-        /// </summary>
-        public static Tconfig HydrateEmptySearchConfigWithFacets<Tconfig>(Tconfig searchConfig, SearchResults<T> initialQuery) where Tconfig : SearchConfig
-        {
-            var filterSelectors = GetFilterSelectors();
-            searchConfig.Facets ??= FacetManager<T>.GetFacetsModel(initialQuery);
-            searchConfig.OrderingFields ??= GetOrderingSelectors();
-            searchConfig.SearchFields ??= GetSearchFieldSelectors();
-            searchConfig.SelectFields ??= GetFieldSelectors();
-            searchConfig.TotalResults ??= initialQuery.TotalCount;
-            searchConfig.TotalPages ??= initialQuery.TotalCount.HasValue ? initialQuery.TotalCount.Value / SearchConfigManager.DefaultPageSize : null;
-            searchConfig.Page ??= 1;
-            searchConfig.ResultsPerPage ??= SearchConfigManager.DefaultPageSize;
-            searchConfig.StringFieldFilters ??= filterSelectors.Where(x => x is StringFieldFilter).Cast<StringFieldFilter>().ToList();
-            searchConfig.NumericFieldFilters ??= filterSelectors.Where(x => x is NumericFieldFilter).Cast<NumericFieldFilter>().ToList();
-            searchConfig.BoolFieldFilters ??= filterSelectors.Where(x => x is BoolFieldFilter).Cast<BoolFieldFilter>().ToList();
-            searchConfig.DateTimeFieldFilters ??= filterSelectors.Where(x => x is DateTimeOffsetFieldFilter).Cast<DateTimeOffsetFieldFilter>().ToList();
-            return searchConfig;
-        }
-
         internal static void ValidateFieldNames(SearchConfig config)
         {
             var select = config.SelectFields.Select(x => x.FieldName);
@@ -110,17 +79,17 @@ namespace Marsman.AzureSearchToolkit
             { 
                 FieldName = x.Property.GetSearchFieldName(),
                 NumberFormat = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.NumberFormat,
-                DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName,
+                DisplayName = x.Property.GetDisplayName(),
                 DateTimeFormat = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DateTimeFormat ?? DateTimeDisplayFormat.DateTime,
                 ValueType = x.Property.PropertyType.GetValueType()
             }).ToList();
 
         private static IList<SearchFieldSelector> GetSearchFieldSelectors() =>
             Props.Where(x => x.FieldAttribute is SearchableFieldAttribute).Select(x => new SearchFieldSelector 
-                { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() }).ToList();
+                { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() }).ToList();
 
         private static IList<OrderingSelector> GetOrderingSelectors() =>
-            Props.Where(x => x.FieldAttribute.IsSortable).Select(x => new OrderingSelector { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() }).ToList();
+            Props.Where(x => x.FieldAttribute.IsSortable).Select(x => new OrderingSelector { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() }).ToList();
 
         private static IList<FieldFilter> GetFilterSelectors() =>
             Props.Where(x => x.FieldAttribute.IsFilterable).Select(GetFilterSelector).ToList();
@@ -128,21 +97,21 @@ namespace Marsman.AzureSearchToolkit
         private static FieldFilter GetFilterSelector((PropertyInfo Property, SimpleFieldAttribute FieldAttribute) x) =>
             x.Property.PropertyType.UnwrapNullable() switch
             {
-                var t when Is<long>(t) => new NumericFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() }, // matches any integer type < 64 bit
-                var t when Is<double>(t) => new NumericFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() }, // matches double or float
-                var t when Is<decimal>(t) => new NumericFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() },
-                var t when Is<DateTimeOffset>(t) => new DateTimeOffsetFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() },
-                var t when Is<bool>(t) => new BoolFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() },
-                var t when Is<string>(t) => new StringFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() },
+                var t when Is<long>(t) => new NumericFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() }, // matches any integer type < 64 bit
+                var t when Is<double>(t) => new NumericFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() }, // matches double or float
+                var t when Is<decimal>(t) => new NumericFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() },
+                var t when Is<DateTimeOffset>(t) => new DateTimeOffsetFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() },
+                var t when Is<bool>(t) => new BoolFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() },
+                var t when Is<string>(t) => new StringFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() },
 
-                var t when IsMany<long>(t) => new NumericFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
-                var t when IsMany<double>(t) => new NumericFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
-                var t when IsMany<decimal>(t) => new NumericFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
-                var t when IsMany<DateTimeOffset>(t) => new DateTimeOffsetFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
-                var t when IsMany<bool>(t) => new BoolFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
-                var t when IsMany<string>(t) => new StringFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
+                var t when IsMany<long>(t) => new NumericFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
+                var t when IsMany<double>(t) => new NumericFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
+                var t when IsMany<decimal>(t) => new NumericFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
+                var t when IsMany<DateTimeOffset>(t) => new DateTimeOffsetFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
+                var t when IsMany<bool>(t) => new BoolFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
+                var t when IsMany<string>(t) => new StringFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName(), IsCollection = true },
 
-                _ => new StringFieldFilter { DisplayName = x.Property.GetCustomAttribute<SearchToolkitDisplayAttribute>()?.DisplayName, FieldName = x.Property.GetSearchFieldName() }
+                _ => new StringFieldFilter { DisplayName = x.Property.GetDisplayName(), FieldName = x.Property.GetSearchFieldName() }
             };
 
 

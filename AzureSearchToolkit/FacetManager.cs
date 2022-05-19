@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Marsman.AzureSearchToolkit
 {
@@ -49,7 +50,7 @@ namespace Marsman.AzureSearchToolkit
                 var displayAttr = prop.GetCustomAttribute<SearchToolkitDisplayAttribute>();
                 var facetSet = new FacetSet();
                 facetSet.FacetName = x.Key;
-                facetSet.DisplayName = displayAttr?.DisplayName;
+                facetSet.DisplayName = prop.GetDisplayName();
                 facetSet.FacetType = attr?.FacetType ?? FacetType.Value;
                 facetSet.NumberFormat = displayAttr?.NumberFormat;
                 facetSet.DateTimeFormat = displayAttr?.DateTimeFormat ?? DateTimeDisplayFormat.DateTime;

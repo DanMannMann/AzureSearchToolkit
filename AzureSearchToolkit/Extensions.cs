@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Marsman.AzureSearchToolkit
 {
     internal static class Extensions
     {
+
         internal static ValueType GetValueType(this Type propertyType)
         {
             propertyType = propertyType.UnwrapNullable();
@@ -84,7 +86,21 @@ namespace Marsman.AzureSearchToolkit
     internal static class PropertyInfoExtensions
     {
         private static readonly ConcurrentDictionary<PropertyInfo, string> cache = new ConcurrentDictionary<PropertyInfo, string>();
-        public static string GetSearchFieldName(this PropertyInfo property) =>
+        internal static string GetSearchFieldName(this PropertyInfo property) =>
             cache.GetOrAdd(property, p => p.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? p.Name);
+
+        internal static string GetDisplayName(this PropertyInfo prop)
+        {
+            var displayAttr = prop.GetCustomAttribute<SearchToolkitDisplayAttribute>();
+            if (displayAttr?.SpaceOutPascalCase != false)
+            {
+                var reg = new Regex("([a-z,0-9])([A-Z])");
+                var reg2 = new Regex("([a-z,A-Z])([0-9])");
+                return reg2.Replace(reg.Replace(displayAttr?.DisplayName ?? prop.Name, SpacePascal), SpacePascal);
+            }
+            return displayAttr?.DisplayName;
+        }
+        private static string SpacePascal(Match match) =>
+            $"{match.Groups[1].Value} {match.Groups[2].Value}";
     }
 }

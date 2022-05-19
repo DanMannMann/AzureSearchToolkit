@@ -11,11 +11,9 @@ namespace Marsman.AzureSearchToolkit
         public string Id { get; set; }
 
         [SearchableField(IsSortable = true)]
-        [SearchToolkitDisplay(DisplayName = "First Name")]
         public string FirstName { get; set; }
 
         [SearchableField(IsSortable = true)]
-        [SearchToolkitDisplay(DisplayName = "Last Name")]
         public string LastName { get; set; }
 
         [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
@@ -36,7 +34,7 @@ namespace Marsman.AzureSearchToolkit
 
         [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
         [SearchToolkitFacet(TimeInterval.Month)]
-        [SearchToolkitDisplay(DateTimeFormat = DateTimeDisplayFormat.Date, DisplayName = "Joined Date")]
+        [SearchToolkitDisplay(DateTimeFormat = DateTimeDisplayFormat.Date)]
         public DateTimeOffset? JoinedDate { get; set; }
 
         [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]

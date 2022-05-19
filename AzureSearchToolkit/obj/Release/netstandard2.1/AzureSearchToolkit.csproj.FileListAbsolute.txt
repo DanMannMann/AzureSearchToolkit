@@ -8,3 +8,6 @@ D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandar
 D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.csproj.CoreCompileInputs.cache
 D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.dll
 D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.pdb
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\bin\Release\netstandard2.1\AzureSearchToolkit.xml
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.xml
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.sourcelink.json

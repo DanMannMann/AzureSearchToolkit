@@ -5,6 +5,8 @@ namespace Marsman.AzureSearchToolkit
     [AttributeUsage(AttributeTargets.Property)]
     public class SearchToolkitDisplayAttribute : Attribute
     {
+        private bool? spaceOutPascalCase = null;
+
         public DateTimeDisplayFormat DateTimeFormat { get; set; }
 
         /// <summary>
@@ -22,6 +24,12 @@ namespace Marsman.AzureSearchToolkit
         public string NumberFormat { get; set; }
 
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Adds spaces before capital letters to create a display name from the property name.
+        /// Defaults to true if the DisplayName is not set
+        /// </summary>
+        public bool SpaceOutPascalCase { get => spaceOutPascalCase.HasValue ? spaceOutPascalCase.Value : DisplayName == null; set => spaceOutPascalCase = value; }
     }
 
     public enum DateTimeDisplayFormat

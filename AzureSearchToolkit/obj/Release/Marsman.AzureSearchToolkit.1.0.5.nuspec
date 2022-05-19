@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Marsman.AzureSearchToolkit</id>
-    <version>1.0.1</version>
+    <version>1.0.5</version>
     <authors>Marsman</authors>
     <license type="expression">MIT</license>
     <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
@@ -14,7 +14,7 @@
       <group targetFramework=".NETStandard2.1">
         <dependency id="Azure.Search.Documents" version="11.3.0" exclude="Build,Analyzers" />
         <dependency id="Marsman.Reflekt" version="1.2.2" exclude="Build,Analyzers" />
-        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
