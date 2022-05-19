@@ -1,0 +1,10 @@
+D:\Code\git\Marsman\AzureSearchHelper\bin\Debug\netstandard2.1\AzureSearchHelper.deps.json
+D:\Code\git\Marsman\AzureSearchHelper\bin\Debug\netstandard2.1\AzureSearchHelper.dll
+D:\Code\git\Marsman\AzureSearchHelper\bin\Debug\netstandard2.1\AzureSearchHelper.pdb
+D:\Code\git\Marsman\AzureSearchHelper\obj\Debug\netstandard2.1\AzureSearchHelper.csproj.AssemblyReference.cache
+D:\Code\git\Marsman\AzureSearchHelper\obj\Debug\netstandard2.1\AzureSearchHelper.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\git\Marsman\AzureSearchHelper\obj\Debug\netstandard2.1\AzureSearchHelper.AssemblyInfoInputs.cache
+D:\Code\git\Marsman\AzureSearchHelper\obj\Debug\netstandard2.1\AzureSearchHelper.AssemblyInfo.cs
+D:\Code\git\Marsman\AzureSearchHelper\obj\Debug\netstandard2.1\AzureSearchHelper.csproj.CoreCompileInputs.cache
+D:\Code\git\Marsman\AzureSearchHelper\obj\Debug\netstandard2.1\AzureSearchHelper.dll
+D:\Code\git\Marsman\AzureSearchHelper\obj\Debug\netstandard2.1\AzureSearchHelper.pdb

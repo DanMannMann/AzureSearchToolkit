@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TestApi": {
+      "commandName": "Project",
+      "commandLineArgs": "host start --useHttps --cert \\\"D:\\\\devcert\\\\server.pfx\\\" --password \\\"Pass@word1\\\""
+    }
+  }
+}

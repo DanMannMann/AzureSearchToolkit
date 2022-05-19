@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <RootNamespace>Marsman.AzureSearchToolkit</RootNamespace>
+	  <TargetFramework>netstandard2.1</TargetFramework>
+	  <Nullable>disable</Nullable>
+	  <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Search.Documents" Version="11.3.0" />
+    <PackageReference Include="Marsman.Reflekt" Version="1.2.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>
