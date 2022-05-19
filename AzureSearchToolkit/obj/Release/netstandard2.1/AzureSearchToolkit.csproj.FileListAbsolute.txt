@@ -1,0 +1,10 @@
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\bin\Release\netstandard2.1\AzureSearchToolkit.deps.json
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\bin\Release\netstandard2.1\AzureSearchToolkit.dll
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\bin\Release\netstandard2.1\AzureSearchToolkit.pdb
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.csproj.AssemblyReference.cache
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.AssemblyInfoInputs.cache
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.AssemblyInfo.cs
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.csproj.CoreCompileInputs.cache
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.dll
+D:\Code\git\Marsman\AzureSearchToolkit\AzureSearchToolkit\obj\Release\netstandard2.1\AzureSearchToolkit.pdb

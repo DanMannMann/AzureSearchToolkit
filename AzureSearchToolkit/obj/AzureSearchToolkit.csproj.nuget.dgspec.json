@@ -5,10 +5,10 @@
   },
   "projects": {
     "D:\\Code\\git\\Marsman\\AzureSearchToolkit\\AzureSearchToolkit\\AzureSearchToolkit.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "restore": {
         "projectUniqueName": "D:\\Code\\git\\Marsman\\AzureSearchToolkit\\AzureSearchToolkit\\AzureSearchToolkit.csproj",
-        "projectName": "AzureSearchToolkit",
+        "projectName": "Marsman.AzureSearchToolkit",
         "projectPath": "D:\\Code\\git\\Marsman\\AzureSearchToolkit\\AzureSearchToolkit\\AzureSearchToolkit.csproj",
         "packagesPath": "C:\\Users\\The King of Town\\.nuget\\packages\\",
         "outputPath": "D:\\Code\\git\\Marsman\\AzureSearchToolkit\\AzureSearchToolkit\\obj\\",
