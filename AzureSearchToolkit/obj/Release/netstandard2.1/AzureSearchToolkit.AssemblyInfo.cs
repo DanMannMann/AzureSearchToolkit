@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Marsman")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec1b86b57105055b2af6afdff4535228134401a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f9aec41ab6fb2d425eb70f1878d982cb86213e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureSearchToolkit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureSearchToolkit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

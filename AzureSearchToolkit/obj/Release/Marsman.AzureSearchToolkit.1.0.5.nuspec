@@ -9,12 +9,12 @@
     <projectUrl>https://github.com/DanMannMann/AzureSearchToolkit</projectUrl>
     <iconUrl>https://umbracocodefirstdocs.azurewebsites.net/icons/marsman.png</iconUrl>
     <description>Package Description</description>
-    <repository type="git" url="https://github.com/DanMannMann/AzureSearchToolkit.git" commit="ec1b86b57105055b2af6afdff4535228134401a2" />
+    <repository type="git" url="https://github.com/DanMannMann/AzureSearchToolkit.git" commit="1f9aec41ab6fb2d425eb70f1878d982cb86213e1" />
     <dependencies>
       <group targetFramework=".NETStandard2.1">
-        <dependency id="Azure.Search.Documents" version="11.3.0" exclude="Build,Analyzers" />
-        <dependency id="Marsman.Reflekt" version="1.2.2" exclude="Build,Analyzers" />
-        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+        <dependency id="Azure.Search.Documents" version="11.4.0" exclude="Build,Analyzers" />
+        <dependency id="Marsman.Reflekt" version="1.2.3" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>

@@ -21,10 +21,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Search.Documents" Version="11.3.0" />
-    <PackageReference Include="Marsman.Reflekt" Version="1.2.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-	 <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+    <PackageReference Include="Azure.Search.Documents" Version="11.4.0" />
+    <PackageReference Include="Marsman.Reflekt" Version="1.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	 <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
 	<!--https://github.com/dotnet/sourcelink/issues/572-->
@@ -32,7 +32,7 @@
 		<TargetFrameworkMonikerAssemblyAttributesPath>$([System.IO.Path]::Combine('$(IntermediateOutputPath)','$(TargetFrameworkMoniker).AssemblyAttributes$(DefaultLanguageSourceExtension)'))</TargetFrameworkMonikerAssemblyAttributesPath>
 	</PropertyGroup>
 	<ItemGroup>
-		<EmbeddedFiles Include="$(GeneratedAssemblyInfoFile)"/>
+		<EmbeddedFiles Include="$(GeneratedAssemblyInfoFile)" />
 	</ItemGroup>
 
 </Project>
